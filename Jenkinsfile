@@ -2,7 +2,7 @@ pipeline {
     //  agent any 
     agent {
         docker {
-            image '3.9.6-eclipse-temurin-11'
+            image 'node:20.11.1-alpine3.19'
         }
     }
     stages {
