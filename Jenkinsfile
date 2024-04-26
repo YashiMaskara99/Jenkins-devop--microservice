@@ -2,7 +2,7 @@ pipeline {
     //  agent any 
     agent {
         docker {
-            image 'myjenkins-blueocean'
+            image 'maven'
         }
     }
     stages {
