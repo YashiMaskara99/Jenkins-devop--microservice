@@ -28,30 +28,4 @@ pipeline {
     agent any
     
     stages {
-        stage('Build') {
-            steps {
-                // Build your application here
-                  echo "build"
-            }
-        }
-        stage('Deploy') {
-            steps {
-                // Deploy your application here
-                sh 'kubectl apply -f deployment.yml'
-            }
-        }
-    }
-    
-    post {
-        success {
-            echo 'Deployment successful!'
-            // Send notification or trigger downstream jobs
-        }
-        failure {
-            echo 'Deployment failed!'
-            // Send notification or take remedial actions
-        }
-    }
-}
-
-
+        stage('Build')
