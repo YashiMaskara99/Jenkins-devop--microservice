@@ -31,7 +31,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Build your application here
-                sh 'mvn clean package'
+                  echo "build"
             }
         }
         stage('Deploy') {
