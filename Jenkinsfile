@@ -1,27 +1,57 @@
-pipeline {
-     agent any 
+// pipeline {
+//      agent any 
    
+//     stages {
+//         stage('Build'){
+//             steps {
+//         echo "build"
+//         }
+//         }
+    
+    
+//         stage('Test'){
+//             steps {
+//         echo "Test"
+//             }
+//         }
+    
+    
+//         stage('Integration test'){
+//             steps {
+//         echo "Integration test"
+//             }
+//         }
+//     }
+        
+// }
+pipeline {
+    agent any
+    
     stages {
-        stage('Build'){
+        stage('Build') {
             steps {
-        echo "build"
-        }
-        }
-    
-    
-        stage('Test'){
-            steps {
-        echo "Test"
+                // Build your application here
+                sh 'mvn clean package'
             }
         }
-    
-    
-        stage('Integration test'){
+        stage('Deploy') {
             steps {
-        echo "Integration test"
+                // Deploy your application here
+                sh 'kubectl apply -f deployment.yml'
             }
         }
     }
-        
+    
+    post {
+        success {
+            echo 'Deployment successful!'
+            // Send notification or trigger downstream jobs
+        }
+        failure {
+            echo 'Deployment failed!'
+            // Send notification or take remedial actions
+        }
+    }
 }
+
 
